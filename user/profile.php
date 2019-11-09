@@ -1,6 +1,12 @@
 <?php
 	session_start();
 	require_once '../login.php';
+	
+	//delete after use ////////////////
+	//$_SESSION['user'] = 'admin';
+	// $_SESSION['loggedIn'] = true; 
+
+
 	// in case the user directly want's to access this page, php doesn't know whose profile to display
 	//echo $_SESSION['user'];
 ?>
@@ -105,19 +111,23 @@ _END;
 				    	<a href="https://calendar.google.com/calendar/embed?src=180010012%40iitdh.ac.in&ctz=Asia%2FKolkata" class="p-3 m-3 btn btn-primary">Calendar</a>
 				    	<a href="https://calendar.google.com/calendar/embed?src=iitdh.ac.in_kg93fmiu87ft3grqjva0r0fd8s%40group.calendar.google.com&ctz=Asia%2FKolkata" class="p-3 m-3 btn btn-primary">Cultural</a>
 				    	<a href="https://calendar.google.com/calendar/embed?src=iitdh.ac.in_onf4cdo18u684mqofapld4j2og%40group.calendar.google.com&ctz=Asia%2FKolkata" class="p-3 m-3 btn btn-primary">Sports</a>
+				    	
 				    </div>
 					</br>
 					</br>
 					
-					<div class="row">
-				    	<a href="logout.php" class="p-3 m-3 btn btn-primary">Logout</a>
-				    </div>
-			    </div>
-
-			</body>
-			</html>
+					
 
 _END;
 	}
+	if($_SESSION['user']=='admin'){
+		echo '<div class="row">
+				    	<a href="add_keywords" class="p-3 m-3 btn btn-primary">Add New Keywords</a>
+			</div>';
+	}
+	echo '<div class="row">
+				    	<a href="logout.php" class="p-3 m-3 btn btn-primary">Logout</a>
+				    </div>';
+	echo '</div></body></html>';
 
 ?>
